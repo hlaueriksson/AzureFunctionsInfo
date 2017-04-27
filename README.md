@@ -1,4 +1,8 @@
-# Assemblies
+# AzureFunctionsInfo
+
+This project was created with [Azure Functions CLI](https://github.com/Azure/azure-functions-cli)
+
+## [`Assemblies`](/Assemblies)
 
 https://azurefunctionsinfo.azurewebsites.net/api/Assemblies
 
