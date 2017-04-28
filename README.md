@@ -1,5 +1,7 @@
 # AzureFunctionsInfo
 
+> ⚡️ Information gathered on Azure Functions by executing Azure Functions ⚡️
+
 This project was created with [Azure Functions CLI](https://github.com/Azure/azure-functions-cli)
 
 ## [`Assemblies`](/Assemblies)
@@ -143,17 +145,16 @@ Docs:
 
 ## [`Type`](/Type)
 
-https://azurefunctionsinfo.azurewebsites.net/api/Type/{name}
+https://azurefunctionsinfo.azurewebsites.net/api/Type?FullName={FullName}
 
-`curl http://localhost:7071/api/Type/{name}`
+`curl https://azurefunctionsinfo.azurewebsites.net/api/Type?FullName={FullName}`
 
-Example: http://localhost:7071/api/Type/System.Net.Http.HttpRequestMessageExtensions
+Example: https://azurefunctionsinfo.azurewebsites.net/api/Type?FullName=System.Net.Http.HttpRequestMessageExtensions
 
-> System.Net.Http.HttpRequestMessageExtensions was found in 3 assemblies
+> System.Net.Http.HttpRequestMessageExtensions was found in 2 assemblies
 
 ```json
 [
-  "System.Web.Http.SelfHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
   "System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
   "System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
 ]
