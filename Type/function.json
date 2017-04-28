@@ -5,11 +5,7 @@
       "authLevel": "anonymous",
       "name": "req",
       "type": "httpTrigger",
-      "direction": "in",
-      "route": "Type/{name}",
-      "methods": [
-        "get"
-      ]
+      "direction": "in"
     },
     {
       "name": "$return",
