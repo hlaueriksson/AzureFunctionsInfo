@@ -18,6 +18,7 @@ public static HttpResponseMessage ByFullName(string fullName, HttpRequestMessage
                     .SelectMany(x => x.GetTypes())
                     .SkipExceptions()
                     .Where(x => x.FullName == fullName)
+                    .OrderBy(x => x.Assembly.FullName)
                     .Select(x => x.Assembly.ToString())
                     .ToList();
 
@@ -34,6 +35,7 @@ public static HttpResponseMessage ByName(string name, HttpRequestMessage req, Tr
                     .SelectMany(x => x.GetTypes())
                     .SkipExceptions()
                     .Where(x => x.Name == name)
+                    .OrderBy(x => x.Assembly.FullName)
                     .Select(x => new { Type = x.FullName, Assembly = x.Assembly.ToString() })
                     .ToList();
 
