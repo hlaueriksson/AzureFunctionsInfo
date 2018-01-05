@@ -14,8 +14,8 @@ namespace AzureFunctionsInfoV2
         [FunctionName("Type")]
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequest req, TraceWriter log)
         {
-            var fullName = req.Query.Keys.FirstOrDefault(q => string.Compare(q, "FullName", StringComparison.OrdinalIgnoreCase) == 0);
-            var name = req.Query.Keys.FirstOrDefault(q => string.Compare(q, "Name", StringComparison.OrdinalIgnoreCase) == 0);
+            var fullName = req.Query.FirstOrDefault(q => string.Compare(q.Key, "FullName", StringComparison.OrdinalIgnoreCase) == 0).Value;
+            var name = req.Query.FirstOrDefault(q => string.Compare(q.Key, "Name", StringComparison.OrdinalIgnoreCase) == 0).Value;
 
             if (!string.IsNullOrEmpty(fullName)) return ByFullName(fullName, log);
 
