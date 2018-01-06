@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
@@ -18,7 +19,7 @@ namespace AzureFunctionsInfoV1
 
             log.Info($"{assemblies.Length} assemblies found");
 
-            return req.CreateResponse(HttpStatusCode.OK, result);
+            return req.CreateResponse(HttpStatusCode.OK, result, JsonMediaTypeFormatter.DefaultMediaType);
         }
     }
 }

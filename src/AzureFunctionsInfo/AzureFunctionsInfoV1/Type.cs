@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
@@ -36,7 +37,7 @@ namespace AzureFunctionsInfoV1
 
             log.Info($"{fullName} was found in {result.Count} assemblies");
 
-            return result.Any() ? req.CreateResponse(HttpStatusCode.OK, result) : req.CreateResponse(HttpStatusCode.NotFound);
+            return result.Any() ? req.CreateResponse(HttpStatusCode.OK, result, JsonMediaTypeFormatter.DefaultMediaType) : req.CreateResponse(HttpStatusCode.NotFound);
         }
 
         private static HttpResponseMessage ByName(string name, HttpRequestMessage req, TraceWriter log)
@@ -51,7 +52,7 @@ namespace AzureFunctionsInfoV1
 
             log.Info($"{name} matched {result.Count} types");
 
-            return result.Any() ? req.CreateResponse(HttpStatusCode.OK, result) : req.CreateResponse(HttpStatusCode.NotFound);
+            return result.Any() ? req.CreateResponse(HttpStatusCode.OK, result, JsonMediaTypeFormatter.DefaultMediaType) : req.CreateResponse(HttpStatusCode.NotFound);
         }
 
         private static IEnumerable<T> SkipExceptions<T>(this IEnumerable<T> values)
