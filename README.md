@@ -21,11 +21,6 @@ This project was created with [Azure Functions Tools for Visual Studio](https://
 * Azure Functions v1 (.NET Framework): https://azurefunctionsinfov1.azurewebsites.net/api/Assemblies
 * Azure Functions v2 (.NET Core): https://azurefunctionsinfov2.azurewebsites.net/api/Assemblies
 
-Docs:
-
-* [Importing namespaces](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#importing-namespaces)
-* [Referencing External Assemblies](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#referencing-external-assemblies)
-
 #### Azure Functions v1 (.NET Framework)
 
 > 126 assemblies found
@@ -451,3 +446,11 @@ Example: https://azurefunctionsinfov2.azurewebsites.net/api/Type?Name=TraceWrite
     }
 ]
 ```
+
+## Azure Functions Core Tools
+
+If you are using [Azure Functions Core Tools](https://github.com/Azure/azure-functions-cli) these links may come in handy when working with assemblies, namespaces and types:
+
+* [Importing namespaces](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#importing-namespaces)
+* [Referencing External Assemblies](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#referencing-external-assemblies)
+* [Using NuGet packages](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#using-nuget-packages)
