@@ -1,6 +1,9 @@
 # AzureFunctionsInfo
 
-> ⚡️ Information gathered on Azure Functions by executing Azure Functions ⚡️
+[![Build Status](https://img.shields.io/appveyor/ci/hlaueriksson/azurefunctionsinfo.svg?style=flat-square)](https://ci.appveyor.com/project/hlaueriksson/azurefunctionsinfo)
+<svg id="svg-functions" viewBox="7 -7 64 64" width="20" height="20"> <path fill="#3999C6" d="M70.6,25.4c0.6-0.6,0.5-1.7,0-2.3L67.5,20L53.7,6.6c-0.6-0.6-1.5-0.6-2.2,0l0,0c-0.6,0.6-0.8,1.7,0,2.3 L66,23.1c0.6,0.6,0.6,1.7,0,2.3L51.2,40.1c-0.6,0.6-0.6,1.7,0,2.3l0,0c0.6,0.6,1.7,0.5,2.2,0l13.7-13.6c0,0,0,0,0.1-0.1L70.6,25.4z"></path> <path fill="#3999C6" d="M7.4,25.4c-0.6-0.6-0.5-1.7,0-2.3l3.1-3.1L24.3,6.6c0.6-0.6,1.5-0.6,2.2,0l0,0c0.6,0.6,0.8,1.7,0,2.3 L12.3,23.1c-0.6,0.6-0.6,1.7,0,2.3l14.5,14.7c0.6,0.6,0.6,1.7,0,2.3l0,0c-0.6,0.6-1.7,0.5-2.2,0L10.6,29c0,0,0,0-0.1-0.1L7.4,25.4z"></path> <polygon fill="#FCD116" points="54.6,-4.5 35.1,-4.5 24.6,25.1 37.4,25.2 27.4,54.5 55,15.4 41.6,15.4 "></polygon> <polygon opacity="0.3" fill="#FF8C00" points="41.6,15.4 54.6,-4.5 44.4,-4.5 33.6,20.1 46.4,20.2  27.4,54.5 55,15.4 "></polygon> </svg>
+
+> Information gathered on Azure Functions by executing Azure Functions
 
 Get information about available:
 
@@ -13,6 +16,12 @@ This information is available on two runtimes:
 * Azure Functions v2 (.NET Core)
 
 This project was created with [Azure Functions Tools for Visual Studio](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs)
+
+When is this useful?
+
+* If you are using [C# script](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp), and want to know what assembly to reference.
+* If you are using [precompiled functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-class-library), and want to know what NuGet package to depend on.
+* Are Azure Functions v1 and v2 using the same version of that assembly?
 
 ## Assemblies
 
