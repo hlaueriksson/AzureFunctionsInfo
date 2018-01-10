@@ -6,4 +6,4 @@ build:
   verbosity: minimal
 
 before_build:
-  - ps: "dotnet restore"
+  - ps: dotnet restore .\src\AzureFunctionsInfo\AzureFunctionsInfo.sln
