@@ -1,7 +1,8 @@
 version: "0.2.0.{build}"
 image: Visual Studio 2017
 
-before_build: 
+before_build:
   - ps: "dotnet restore"
-build: 
+build:
+  project: .\src\AzureFunctionsInfo\AzureFunctionsInfo.sln
   verbosity: minimal
