@@ -14,7 +14,7 @@ namespace AzureFunctionsInfoV2
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequest req, TraceWriter log)
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            var result = assemblies.OrderBy(x => x.FullName).Select(x => x.ToString()).ToList();
+            var result = assemblies.Except(new[] { typeof(Assemblies).Assembly }).OrderBy(x => x.FullName).Select(x => x.ToString()).ToList();
 
             log.Info($"{assemblies.Length} assemblies found");
 
