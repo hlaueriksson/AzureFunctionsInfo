@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionsInfoV1", "AzureFunctionsInfoV1\AzureFunctionsInfoV1.csproj", "{A886C695-53FD-401B-81A4-0FA60CD79C96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionsInfoV1", "src\AzureFunctionsInfoV1\AzureFunctionsInfoV1.csproj", "{A886C695-53FD-401B-81A4-0FA60CD79C96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionsInfoV2", "AzureFunctionsInfoV2\AzureFunctionsInfoV2.csproj", "{662E3173-254D-4FCE-86D0-5298AE2854EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionsInfoV2", "src\AzureFunctionsInfoV2\AzureFunctionsInfoV2.csproj", "{662E3173-254D-4FCE-86D0-5298AE2854EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionsInfoV3", "AzureFunctionsInfoV3\AzureFunctionsInfoV3.csproj", "{05E4ADF6-1D6D-4947-AD4A-624B84635318}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionsInfoV3", "src\AzureFunctionsInfoV3\AzureFunctionsInfoV3.csproj", "{05E4ADF6-1D6D-4947-AD4A-624B84635318}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,7 @@
-version: "0.2.0.{build}"
-image: Visual Studio 2017
-
-build:
-  project: .\src\AzureFunctionsInfo\AzureFunctionsInfo.sln
-  verbosity: minimal
-
+version: "0.3.0.{build}"
+image: Visual Studio 2019
 before_build:
-  - ps: dotnet restore .\src\AzureFunctionsInfo\AzureFunctionsInfo.sln
+  - ps: dotnet restore AzureFunctionsInfo.sln
+build:
+  project: AzureFunctionsInfo.sln
+  verbosity: minimal
