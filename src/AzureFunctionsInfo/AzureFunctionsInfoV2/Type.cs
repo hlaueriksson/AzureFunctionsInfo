@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace AzureFunctionsInfoV2
 {
     public static class Type
     {
         [FunctionName("Type")]
-        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequest req, TraceWriter log)
+        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, ILogger log)
         {
             var fullName = req.Query.FirstOrDefault(q => string.Compare(q.Key, "FullName", StringComparison.OrdinalIgnoreCase) == 0).Value;
             var name = req.Query.FirstOrDefault(q => string.Compare(q.Key, "Name", StringComparison.OrdinalIgnoreCase) == 0).Value;
@@ -24,7 +24,7 @@ namespace AzureFunctionsInfoV2
             return new BadRequestResult();
         }
 
-        private static IActionResult ByFullName(string fullName, TraceWriter log)
+        private static IActionResult ByFullName(string fullName, ILogger log)
         {
             var result = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
@@ -34,14 +34,14 @@ namespace AzureFunctionsInfoV2
                 .Select(x => x.Assembly.ToString())
                 .ToList();
 
-            log.Info($"{fullName} was found in {result.Count} assemblies");
+            log.LogInformation($"{fullName} was found in {result.Count} assemblies");
 
             if (result.Any()) return new OkObjectResult(result);
 
             return new NotFoundResult();
         }
 
-        private static IActionResult ByName(string name, TraceWriter log)
+        private static IActionResult ByName(string name, ILogger log)
         {
             var result = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
@@ -51,7 +51,7 @@ namespace AzureFunctionsInfoV2
                 .Select(x => new { Type = x.FullName, Assembly = x.Assembly.ToString() })
                 .ToList();
 
-            log.Info($"{name} matched {result.Count} types");
+            log.LogInformation($"{name} matched {result.Count} types");
 
             if (result.Any()) return new OkObjectResult(result);
 
