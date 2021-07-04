@@ -1,6 +1,6 @@
 # AzureFunctionsInfo
 
-[![Build status](https://ci.appveyor.com/api/projects/status/jflnn0l4437y4cs3?svg=true)](https://ci.appveyor.com/project/hlaueriksson/azurefunctionsinfo)
+[![build](https://github.com/hlaueriksson/AzureFunctionsInfo/actions/workflows/build.yml/badge.svg)](https://github.com/hlaueriksson/AzureFunctionsInfo/actions/workflows/build.yml)
 
 > Information gathered on Azure Functions by executing Azure Functions
 
