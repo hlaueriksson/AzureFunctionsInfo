@@ -13,7 +13,7 @@ Get information about available:
 
 This information is available for:
 
-* [.NET 6.0 Isolated (Long-term support)](v6.md)
+* [.NET 8.0 Isolated (Long-term support)](V8.md)
 
 When is this useful?
 
@@ -23,9 +23,9 @@ When is this useful?
 
 > Get information about available `Assemblies` and their version
 
-* https://azurefunctionsinfov6.azurewebsites.net/api/Assemblies
+* https://azurefunctionsinfov8.azurewebsites.net/api/Assemblies
 
-## Type
+## Types
 
 > Get information about available `Types` and what `Assembly` they belong to
 
@@ -35,7 +35,7 @@ Query by:
 
 > The fully qualified name of the type, including its namespace but not its assembly
 
-* https://azurefunctionsinfov6.azurewebsites.net/api/Type?FullName={FullName}
+* `https://azurefunctionsinfov8.azurewebsites.net/api/Types?FullName={FullName}`
 
 ### Name
 
@@ -43,4 +43,4 @@ Query by:
 
 > The simple name of the type
 
-* https://azurefunctionsinfov6.azurewebsites.net/api/Type?Name={Name}
+* `https://azurefunctionsinfov8.azurewebsites.net/api/Types?Name={Name}`
