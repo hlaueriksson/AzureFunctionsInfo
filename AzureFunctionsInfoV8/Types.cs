@@ -6,13 +6,13 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureFunctionsInfoV8
 {
-    public class Type
+    public class Types
     {
         private readonly ILogger _logger;
 
-        public Type(ILoggerFactory loggerFactory)
+        public Types(ILoggerFactory loggerFactory)
         {
-            _logger = loggerFactory.CreateLogger<Type>();
+            _logger = loggerFactory.CreateLogger<Types>();
         }
 
         [Function("Type")]
