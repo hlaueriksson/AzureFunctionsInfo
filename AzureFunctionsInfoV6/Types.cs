@@ -1,8 +1,8 @@
-using System.Net;
-using System.Web;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
+using System.Net;
+using System.Web;
 
 namespace AzureFunctionsInfo
 {
