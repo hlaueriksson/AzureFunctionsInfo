@@ -4,32 +4,27 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AzureFunctionsInfoV6
+namespace AzureFunctionsInfo
 {
-    public class Types
+    public class Types(ILoggerFactory loggerFactory)
     {
-        private readonly ILogger _logger;
+        private readonly ILogger _logger = loggerFactory.CreateLogger<Types>();
 
-        public Types(ILoggerFactory loggerFactory)
-        {
-            _logger = loggerFactory.CreateLogger<Types>();
-        }
-
-        [Function("Type")]
-        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
+        [Function(nameof(Types))]
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
         {
             var query = HttpUtility.ParseQueryString(req.Url.Query);
             var fullName = query["FullName"];
             var name = query["Name"];
 
-            if (!string.IsNullOrEmpty(fullName)) return ByFullName(fullName, req);
+            if (!string.IsNullOrEmpty(fullName)) return await ByFullNameAsync(fullName, req);
 
-            if (!string.IsNullOrEmpty(name)) return ByName(name, req);
+            if (!string.IsNullOrEmpty(name)) return await ByNameAsync(name, req);
 
             return req.CreateResponse(HttpStatusCode.BadRequest);
         }
 
-        private HttpResponseData ByFullName(string fullName, HttpRequestData req)
+        private async Task<HttpResponseData> ByFullNameAsync(string fullName, HttpRequestData req)
         {
             var result = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
@@ -39,19 +34,19 @@ namespace AzureFunctionsInfoV6
                 .Select(x => x.Assembly.ToString())
                 .ToList();
 
-            _logger.LogInformation($"{fullName} was found in {result.Count} assemblies");
+            _logger.LogInformation("{FullName} was found in {Count} assemblies", fullName, result.Count);
 
-            if (result.Any())
+            if (result.Count != 0)
             {
                 var response = req.CreateResponse();
-                response.WriteAsJsonAsync(result);
+                await response.WriteAsJsonAsync(result);
                 return response;
             }
 
             return req.CreateResponse(HttpStatusCode.NotFound);
         }
 
-        private HttpResponseData ByName(string name, HttpRequestData req)
+        private async Task<HttpResponseData> ByNameAsync(string name, HttpRequestData req)
         {
             var result = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
@@ -61,12 +56,12 @@ namespace AzureFunctionsInfoV6
                 .Select(x => new { Type = x.FullName, Assembly = x.Assembly.ToString() })
                 .ToList();
 
-            _logger.LogInformation($"{name} matched {result.Count} types");
+            _logger.LogInformation("{Name} matched {Count} types", name, result.Count);
 
-            if (result.Any())
+            if (result.Count != 0)
             {
                 var response = req.CreateResponse();
-                response.WriteAsJsonAsync(result);
+                await response.WriteAsJsonAsync(result);
                 return response;
             }
 

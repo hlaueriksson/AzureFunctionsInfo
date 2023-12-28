@@ -2,19 +2,14 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AzureFunctionsInfoV6
+namespace AzureFunctionsInfo
 {
-    public class Assemblies
+    public class Assemblies(ILoggerFactory loggerFactory)
     {
-        private readonly ILogger _logger;
+        private readonly ILogger _logger = loggerFactory.CreateLogger<Assemblies>();
 
-        public Assemblies(ILoggerFactory loggerFactory)
-        {
-            _logger = loggerFactory.CreateLogger<Assemblies>();
-        }
-
-        [Function("Assemblies")]
-        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
+        [Function(nameof(Assemblies))]
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             var result = assemblies.Except(new[] { typeof(Assemblies).Assembly }).OrderBy(x => x.FullName).Select(x => x.ToString()).ToList();
@@ -22,7 +17,7 @@ namespace AzureFunctionsInfoV6
             _logger.LogInformation("{Count} assemblies found", assemblies.Length);
 
             var response = req.CreateResponse();
-            response.WriteAsJsonAsync(result);
+            await response.WriteAsJsonAsync(result);
 
             return response;
         }
